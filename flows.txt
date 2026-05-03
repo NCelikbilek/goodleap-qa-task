@@ -1,0 +1,127 @@
+===========================================
+GOODLEAP QA - AUTOMATED TEST SCENARIOS
+===========================================
+
+TARGET APPLICATION: https://www.saucedemo.com/
+TARGET API: https://petstore.swagger.io/v2
+
+-------------------------------------------
+PART 1: UI TEST FLOWS
+-------------------------------------------
+
+FEATURE: LOGIN
+--------------
+1. Successful login with valid credentials (Happy Path)
+   - Navigate to login page
+   - Enter valid username: standard_user
+   - Enter valid password: secret_sauce
+   - Click login button
+   - Expected: Redirected to inventory page
+
+2. Login should fail for locked out user (Negative Test)
+   - Navigate to login page
+   - Enter username: locked_out_user
+   - Enter valid password: secret_sauce
+   - Click login button
+   - Expected: Error message is displayed
+
+3. Login with performance glitch user (Edge Case)
+   - Navigate to login page
+   - Enter username: performance_glitch_user
+   - Enter valid password: secret_sauce
+   - Click login button
+   - Expected: Successfully redirected to inventory page (with delay)
+
+FEATURE: SHOPPING CART
+----------------------
+4. Add a product to the cart (Happy Path)
+   - Login as standard_user
+   - Click Add to Cart on first product
+   - Expected: Cart badge shows "1"
+
+5. Remove a product from the cart (Negative Test)
+   - Login as standard_user
+   - Add first product to cart
+   - Remove first product from cart
+   - Expected: Cart badge is no longer visible
+
+6. Cart retains items after navigation (Edge Case)
+   - Login as standard_user
+   - Add first product to cart
+   - Navigate to product detail page
+   - Expected: Cart badge still shows "1"
+
+FEATURE: CHECKOUT
+-----------------
+7. Complete checkout with valid details (Happy Path)
+   - Login as standard_user
+   - Add product to cart
+   - Go to cart and proceed to checkout
+   - Enter first name, last name, zip code
+   - Continue to order overview and finish
+   - Expected: Order confirmation message is visible
+
+8. Checkout fails with empty form (Negative Test)
+   - Login as standard_user
+   - Add product to cart
+   - Go to cart and proceed to checkout
+   - Click continue without filling in details
+   - Expected: Error message is displayed
+
+FEATURE: LOGOUT
+---------------
+9. Successful logout (Happy Path)
+   - Login as standard_user
+   - Open burger menu
+   - Click Logout
+   - Expected: Redirected to login page
+
+10. User cannot access inventory after logout (Security Test)
+    - Login as standard_user
+    - Logout
+    - Navigate directly to inventory URL
+    - Expected: Redirected back to login page
+
+-------------------------------------------
+PART 2: API TEST FLOWS
+-------------------------------------------
+
+TARGET: Pet Endpoints — https://petstore.swagger.io/v2
+
+11. Create a new pet (Happy Path)
+    - POST /pet with valid payload
+    - Expected: 200 OK, response contains pet name and status
+
+12. Retrieve a pet by ID (Happy Path)
+    - POST /pet to create pet
+    - GET /pet/{id}
+    - Expected: 200 OK, correct pet data returned
+
+13. Update an existing pet (Happy Path)
+    - POST /pet to create pet
+    - PUT /pet with updated name and status
+    - Expected: 200 OK, updated fields reflected in response
+
+14. Find pets by status (Happy Path)
+    - GET /pet/findByStatus?status=available
+    - Expected: 200 OK, returns array of pets
+
+15. Delete a pet (Happy Path)
+    - POST /pet to create pet
+    - DELETE /pet/{id}
+    - Expected: 200 OK
+
+16. Get deleted pet returns 404 (Negative Test)
+    - POST /pet to create pet
+    - DELETE /pet/{id}
+    - GET /pet/{id}
+    - Expected: 404 Not Found
+
+-------------------------------------------
+SUMMARY
+-------------------------------------------
+Total UI scenarios:  10
+Total UI tests:      30 (10 scenarios x 3 browsers)
+Total API tests:     6
+Grand total:         36 tests
+===========================================

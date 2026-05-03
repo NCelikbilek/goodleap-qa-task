@@ -1,0 +1,24 @@
+{
+  "name": "goodleap-playwright",
+  "version": "1.0.0",
+  "description": "Hybrid UI + API test automation framework using Playwright, TypeScript and BDD",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx bddgen && npx playwright test",
+    "test:ui": "npx bddgen && npx playwright test --project='UI - Chromium' --project='UI - Firefox' --project='UI - Webkit'",
+    "test:api": "npx bddgen && npx playwright test --project='API - Pet'",
+    "test:chromium": "npx bddgen && npx playwright test --project='UI - Chromium'",
+    "test:firefox": "npx bddgen && npx playwright test --project='UI - Firefox'",
+    "test:webkit": "npx bddgen && npx playwright test --project='UI - Webkit'",
+    "report": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "playwright-bdd": "^8.5.0"
+  }
+}
