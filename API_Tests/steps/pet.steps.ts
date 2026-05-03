@@ -14,10 +14,15 @@ Given('the pet has been created', async ({ request }) => {
   response = await request.post('https://petstore.swagger.io/v2/pet', {
     data: {
       id: petId,
-      name: 'Buddy',
+      name: 'Bubble',
       status: 'available',
-      category: { id: 1, name: 'Dogs' },
-      photoUrls: ['https://example.com/buddy.jpg'],
+      category: { id: 1, name: 'Dog' },
+      tags: [
+        { id: 1, name: 'male' },
+        { id: 2, name: 'age:3' },
+        { id: 3, name: 'breed:Golden Retriever' },
+      ],
+      photoUrls: ['https://example.com/bubble.jpg'],
     },
   });
 });
@@ -30,10 +35,15 @@ When('the user sends a POST request to create the pet', async ({ request }) => {
   response = await request.post('https://petstore.swagger.io/v2/pet', {
     data: {
       id: petId,
-      name: 'Buddy',
+      name: 'Bubble',
       status: 'available',
-      category: { id: 1, name: 'Dogs' },
-      photoUrls: ['https://example.com/buddy.jpg'],
+      category: { id: 1, name: 'Dog' },
+      tags: [
+        { id: 1, name: 'male' },
+        { id: 2, name: 'age:3' },
+        { id: 3, name: 'breed:Golden Retriever' },
+      ],
+      photoUrls: ['https://example.com/bubble.jpg'],
     },
   });
 });
@@ -48,8 +58,13 @@ When('the user updates the pet name to {string} and status to {string}', async (
       id: petId,
       name,
       status,
-      category: { id: 1, name: 'Dogs' },
-      photoUrls: ['https://example.com/buddy.jpg'],
+      category: { id: 1, name: 'Dog' },
+      tags: [
+        { id: 1, name: 'male' },
+        { id: 2, name: 'age:3' },
+        { id: 3, name: 'breed:Golden Retriever' },
+      ],
+      photoUrls: ['https://example.com/bubble.jpg'],
     },
   });
 });
