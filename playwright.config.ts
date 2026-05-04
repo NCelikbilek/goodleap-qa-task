@@ -19,36 +19,26 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
+  use: {
+    headless: false,
+    trace: 'on',
+    launchOptions: { slowMo: 500 },
+  },
   projects: [
     {
       name: 'UI - Chromium',
       testDir: uiTestDir,
-      use: { 
-        ...devices['Desktop Chrome'],
-        headless: false,
-        trace: 'on',
-        launchOptions: { slowMo: 500 },
-      },
+      use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'UI - Firefox',
       testDir: uiTestDir,
-      use: { 
-        ...devices['Desktop Firefox'],
-        headless: false,
-        trace: 'on',
-        launchOptions: { slowMo: 500 },
-      },
+      use: { ...devices['Desktop Firefox'] },
     },
     {
       name: 'UI - Webkit',
       testDir: uiTestDir,
-      use: { 
-        ...devices['Desktop Safari'],
-        headless: false,
-        trace: 'on',
-        launchOptions: { slowMo: 500 },
-      },
+      use: { ...devices['Desktop Safari'] },
     },
     {
       name: 'API - Pet',
