@@ -1,3 +1,4 @@
 {
-  "playwright.reuseBrowser": false
+  "playwright.reuseBrowser": false,
+  "playwright.testDir": ".features-gen"
 }
