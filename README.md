@@ -1,8 +1,10 @@
 # Goodleap QA Automation
 
-This project contains automated tests for the Swag Labs e-commerce app and the Petstore API.
+This project contains automated UI and API tests built with Playwright and TypeScript.
 
-I built it using Playwright with TypeScript, following BDD principles with Gherkin feature files and a Page Object Model structure. The goal was to cover the most critical user flows while keeping the code clean and easy to maintain.
+For UI testing, I tested the Swag Labs e-commerce application (https://www.saucedemo.com) covering the most critical user flows. For API testing, I tested the Petstore Pet endpoints (https://petstore.swagger.io/v2).
+
+I followed BDD principles with Gherkin feature files and a Page Object Model structure to keep the code clean, readable, and easy to maintain.
 
 ---
 
@@ -10,15 +12,19 @@ I built it using Playwright with TypeScript, following BDD principles with Gherk
 
 ```
 goodleap-qa-task/
-├── UI_Tests/
-│   ├── features/       # Gherkin scenarios (login, cart, checkout, logout)
-│   ├── pages/          # Page Object classes
-│   └── steps/          # Step definitions
 ├── API_Tests/
-│   ├── features/       # API scenarios (pet endpoints)
-│   └── steps/          # API step definitions
+│   ├── features/           # API Gherkin scenarios
+│   ├── steps/              # API step definitions
+│   └── api-tests.md        # API test documentation
+├── UI_Tests/
+│   ├── features/           # UI Gherkin scenarios (login, cart, checkout, logout)
+│   ├── pages/              # Page Object classes
+│   └── steps/              # Step definitions
+├── .gitignore
+├── flows.txt               # Test scenarios overview
+├── package.json
 ├── playwright.config.ts
-└── package.json
+└── README.md
 ```
 
 ---
@@ -57,13 +63,13 @@ npm run report
 
 ## What's Covered
 
-**UI — Swag Labs**
+**UI — Swag Labs (https://www.saucedemo.com)**
 - Login: valid user, locked out user, performance glitch user
 - Cart: add item, remove item, cart persists after navigation
 - Checkout: complete flow, empty form validation
 - Logout: successful logout, can't access inventory after logout
 
-**API — Petstore /pet endpoints**
+**API — Petstore (https://petstore.swagger.io/v2)**
 - Create, retrieve, update, delete a pet
 - Find pets by status
 - Confirm 404 after deletion
