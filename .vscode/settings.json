@@ -1,4 +1,0 @@
-{
-  "playwright.reuseBrowser": false,
-  "playwright.testDir": ".features-gen"
-}
