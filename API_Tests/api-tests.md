@@ -3,15 +3,19 @@
 ## Tools & Frameworks
 - **Playwright** (API testing via `request` context)
 - **TypeScript**
+- **playwright-bdd** (BDD/Gherkin format)
 
 ## How to Run
 
 ```bash
 # Run API tests only
-npx playwright test --config=playwright.api.config.ts
+npm run test:api
 
-# Run with HTML report
-npx playwright test --config=playwright.api.config.ts && npx playwright show-report
+# Run all tests (UI + API)
+npm test
+
+# View HTML report
+npm run report
 ```
 
 ## Target API
@@ -43,4 +47,5 @@ Swagger Petstore: https://petstore.swagger.io/v2
 ## Design Decisions
 - Used `Date.now()` for unique pet IDs to avoid test collisions
 - Tests run sequentially (`fullyParallel: false`) to ensure CRUD order
-- Separate config file (`playwright.api.config.ts`) to isolate API tests from UI tests
+- API tests are integrated into the same `playwright.config.ts` as UI tests under the `API - Pet` project
+- Used BDD/Gherkin format for consistency with UI tests
