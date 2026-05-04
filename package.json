@@ -1,5 +1,5 @@
 {
-  "name": "goodleap-playwright",
+  "name": "goodleap-qa-task",
   "version": "1.0.0",
   "description": "Hybrid UI + API test automation framework using Playwright, TypeScript and BDD",
   "main": "index.js",
