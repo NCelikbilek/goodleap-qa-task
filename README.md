@@ -1,4 +1,4 @@
-# Goodleap Playwright Automation
+# Goodleap QA Automation
 
 This project contains automated tests for the Swag Labs e-commerce app and the Petstore API.
 
@@ -9,7 +9,7 @@ I built it using Playwright with TypeScript, following BDD principles with Gherk
 ## Project Structure
 
 ```
-goodleap-playwright/
+goodleap-qa-task/
 ├── UI_Tests/
 │   ├── features/       # Gherkin scenarios (login, cart, checkout, logout)
 │   ├── pages/          # Page Object classes
@@ -70,12 +70,28 @@ npm run report
 
 ---
 
+## CI/CD
+
+> **Note:** CI/CD integration was not part of the original requirements. I added it on my own initiative to demonstrate a complete automation workflow.
+
+This project includes a Jenkins pipeline that:
+- Pulls the latest code from GitHub
+- Installs dependencies and Playwright browsers
+- Runs UI and API tests automatically
+- Sends an email report with the build result
+
+The pipeline is configured to run daily at 9:00 AM.
+
+---
+
 ## Tech Stack
 
 - Playwright + TypeScript
 - playwright-bdd (Gherkin/BDD)
 - Page Object Model
 - Cross-browser: Chromium, Firefox, Webkit
+- Jenkins (CI/CD)
 
 ---
+
 Developed by Nazli Celikbilek
